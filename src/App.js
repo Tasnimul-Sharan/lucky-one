@@ -20,32 +20,39 @@ const Header = () => {
 
 const Shop = () => {
 const [devices, setDevice] = useState([])
+const [cart, setCart] = useState([])
 
 useEffect(() => {
   fetch("data.json")
   .then(res => res.json())
   .then(data => setDevice(data))
 }, [])
+
+const handleDevice = (device) => {
+  console.log(device)
+  let newCart = [...cart, device]
+ setCart(newCart)
+}
+
   return (
    <div className='shop-contaiiner'>
       <div className='device-container'>
         {
-          devices.map(device => <Device key={device.id} device={device} ></Device>)
+          devices.map(device => <Device key={device.id} device={device} handleDevice={handleDevice} ></Device>)
         }
       </div>
       <div className='cart-container'>
-        <Cart></Cart>
+        {/* <Cart></Cart> */}
+        <h1>Order Devices</h1>
+     <h5>device name :{cart.length} </h5>
       </div>
    </div>
   )
 }
 
-const handleDevice = (device) => {
-   console.log(device)
-   
-}
 
-const Device = ({device}) => {
+const Device = ({device, handleDevice}) => {
+
   const {id, price, picture, name} = device ;
   return (
     <div className='device'>
@@ -60,13 +67,13 @@ const Device = ({device}) => {
   )
 }
 
-const Cart = () => {
-  return (
-    <div>
-      <h1>Order Devices</h1>
-      <h5>device name :</h5>
-    </div>
-  )
-}
+// const Cart = () => {
+//   return (
+//     <div>
+//       <h1>Order Devices</h1>
+//       <h5>device name :{Cart.length} </h5>
+//     </div>
+//   )
+// }
 
 export default App;
