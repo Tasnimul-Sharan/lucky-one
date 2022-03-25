@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+.shop-contaiiner {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+}
+
+.device-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin: 50px 50px;
+}
+
+.device img {
+  width: 280px;
+  height: 280px;
+  border-radius: 8px;
+  margin: 8px;
+}
+.device {
+  width: 300px;
+  height: 450px;
+  border: 1px solid lightpink;
+}
+
+.btn-device {
+  width: 100%;
+  border: none;
+  background-color: brown;
+  border-radius: 0 0 8px 8px;
+}
+
+.cart-container {
+  background-color: lightcoral;
+}
