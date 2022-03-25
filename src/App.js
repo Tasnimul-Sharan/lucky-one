@@ -42,6 +42,7 @@ useEffect(() => {
 
 const handleDevice = (device) => {
    console.log(device)
+   
 }
 
 const Device = ({device}) => {

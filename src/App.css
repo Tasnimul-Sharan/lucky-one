@@ -57,17 +57,29 @@
 }
 .device {
   width: 300px;
-  height: 450px;
+  height: 460px;
   border: 1px solid lightpink;
 }
 
 .btn-device {
   width: 100%;
   border: none;
-  background-color: brown;
+  background-color: rgb(233, 148, 148);
+  padding: 15px;
   border-radius: 0 0 8px 8px;
+}
+
+.btn-device:hover {
+  background-color: rgb(204, 96, 57);
+  /* color: orangered; */
 }
 
 .cart-container {
   background-color: lightcoral;
+}
+
+@media screen and (max-width: 1100px) {
+  .device-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
