@@ -1,5 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   return (
@@ -42,9 +44,9 @@ const handleDevice = (device) => {
         }
       </div>
       <div className='cart-container'>
-        {/* <Cart></Cart> */}
-        <h1>Order Devices</h1>
-     <h5>device name :{cart.length} </h5>
+        <Cart cart={cart}></Cart>
+        {/* <h1>Selected Devices</h1> */}
+     {/* <h5>device name :{cart.name} </h5> */}
       </div>
    </div>
   )
@@ -62,18 +64,31 @@ const Device = ({device, handleDevice}) => {
         <p>name : {name}</p>
         <p>price : $ {price}</p>
       </div>
-      <button onClick={()=>handleDevice(device)} className='btn-device'>Add To Cart</button>
+      <button onClick={()=>handleDevice(device)} className='btn-device'>
+        <p>Add To Cart <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon></p>
+      </button>
     </div>
   )
 }
 
-// const Cart = () => {
-//   return (
-//     <div>
-//       <h1>Order Devices</h1>
-//       <h5>device name :{Cart.length} </h5>
-//     </div>
-//   )
-// }
+const Cart = ({cart}) => {
+// const {name} = cart;
+let deviceName = []
+// const pair = Object.entries(cart)
+
+for(const device of cart){
+deviceName = deviceName + device.name;
+// deviceName.push (device.name);
+}
+
+  return (
+    <div>
+      <h1>Order Devices</h1>
+      <h5>{deviceName}</h5>
+      <button>Choose one for me</button> <br />
+      <button>Choose again</button>
+    </div>
+  )
+}
 
 export default App;
