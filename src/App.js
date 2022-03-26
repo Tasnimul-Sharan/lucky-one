@@ -70,46 +70,41 @@ const Device = ({device, handleDevice}) => {
   )
 }
 
-const Cart = ({cart }) => {
+const Cart = ({cart}) => {
   console.log(cart)
 
+  const [product, setProduct] = useState([])
+  
   const [empty, setEmpty] = useState([])
-const [product, setProduct] = useState([0])
-
-
+  
 const handleEmpty = () => {
-  let newEmpty = []
-  // console.log(empty)
-  newEmpty = [...empty, cart];
-  setEmpty(newEmpty);
+  // let newEmpty = [...empty, cart]
+  setEmpty("") ;
   }
 
-  const handleCart = (gadGet) => {
-    // console.log(random)
-    let newProd = [...product, gadGet]
-
-    const nameDevice = Math.floor(Math.random() * cart.name);
+  const handleCart = () => {
+    // console.log(gadGet)
+    // let newProd = [...product, gadGet]
+    const nameDevice = Math.floor(Math.random() * 1000);
     const nameString = nameDevice + '';
     if (nameString.length === 4) {
         return nameDevice;
     }
-    else {
-    setProduct(newProd) ;
-    }
-  
+    setProduct([...product]) ;
   }
 
   return (
     <div>
       <h2>Selected Devices</h2>
       {
-        cart.map(crt => <h4 key={crt.name}>{crt.name}</h4>)
+        cart.map(crt => <h4 key={crt.name}>{crt.name} {empty}</h4>)
       }
       <button onClick={()=>handleCart()} className="btn-cart">Choose one device</button> <br/>
-      <button onClick={() =>handleEmpty()} className="btn-empty">Choose again</button>
+      <button onClick={handleEmpty} className="btn-empty">Choose again</button>
     </div>
   )
 }
+
 
 const Footer = () => {
   return (
