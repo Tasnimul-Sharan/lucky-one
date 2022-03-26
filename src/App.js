@@ -75,7 +75,7 @@ const Cart = ({cart}) => {
 
   const [product, setProduct] = useState([])
   
-  const [empty, setEmpty] = useState([])
+  const [empty, setEmpty] = useState("")
   
 const handleEmpty = () => {
   // let newEmpty = [...empty, cart]
@@ -83,10 +83,8 @@ const handleEmpty = () => {
   }
 
   const handleCart = () => {
-    // console.log(gadGet)
-    // let newProd = [...product, gadGet]
     const nameDevice = Math.floor(Math.random() * 1000);
-    const nameString = nameDevice + '';
+    const nameString = nameDevice + cart.name ;
     if (nameString.length === 4) {
         return nameDevice;
     }
@@ -97,10 +95,10 @@ const handleEmpty = () => {
     <div>
       <h2>Selected Devices</h2>
       {
-        cart.map(crt => <h4 key={crt.name}>{crt.name} {empty}</h4>)
+        cart.map(crt => <h4 key={crt.name}empty={empty}>{crt.name}</h4>)
       }
       <button onClick={()=>handleCart()} className="btn-cart">Choose one device</button> <br/>
-      <button onClick={handleEmpty} className="btn-empty">Choose again</button>
+      <button onClick={()=>handleEmpty()} className="btn-empty">Choose again</button>
     </div>
   )
 }
@@ -113,7 +111,7 @@ const Footer = () => {
       <p>A JavaScript Library building user interfaces. React use jsx(javaScript XML) , with the help of jsx we can write html code in javaScript expression are used "{}" by this.A react Application is made of multiple components, each responsible for rendering a small, reusable piece of HTML.React implements a virtual dom that is basically a DOM tree representation in javaScript. So when it needs to read or write to the DOM, it will use the virtual representation of it. Then the virtual DOM will try to find the most efficient way to update the DOM.</p>
 
       <h2>Props vs State difference</h2>
-      <p>Props are read-only and state is both read and write.Props cannot be modified and state can be modified using this setState. Where you change the state it is called stateful component and props are called to be presentation component.Props are Immutable but the states are mutable.Props are used to pass data from one component to another and the state is passed within the component only. </p>
+      <p>Props are read-only and state is both read and write.Props cannot be modified and state can be modified using this setState. Where you change the state it is called stateful component and props are called to be presentation component.Props are immutable but the states are mutable.Props are used to pass data from one component to another and the state is passed within the component only. </p>
     </div>
   )
 }
