@@ -8,6 +8,7 @@ function App() {
     <div className="App">
      <Header></Header>
      <Shop></Shop>
+     <Footer></Footer>
     </div>
   );
 }
@@ -63,14 +64,32 @@ const Device = ({device, handleDevice}) => {
         <p>price : $ {price}</p>
       </div>
       <button onClick={()=>handleDevice(device)} className='btn-device'>
-        <p>Add To Cart <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon></p>
+        <p>Add To Cart <FontAwesomeIcon icon={faShoppingCart} ></FontAwesomeIcon></p>
       </button>
     </div>
   )
 }
 
-const Cart = ({cart}) => {
+const Cart = ({cart }) => {
   console.log(cart)
+
+  const [empty, setEmpty] = useState([])
+const [product, setProduct] = useState([])
+
+
+const handleEmpty = () => {
+  let newEmpty = []
+  console.log(empty)
+  newEmpty = [...empty, cart];
+  setEmpty(newEmpty);
+  }
+
+  const handleCart = (random) => {
+    console.log(random)
+    let newProd = [...product, random ]
+    setProduct(newProd) ;
+  
+  }
 
   return (
     <div>
@@ -78,8 +97,17 @@ const Cart = ({cart}) => {
       {
         cart.map(crt => <h3 key={crt.name}>{crt.name}</h3>)
       }
-      <button>Choose one for me</button> <br />
-      <button>Choose again</button>
+      <button onClick={()=>handleCart()} className="btn-cart">Choose one device</button> <br/>
+      <button onClick={() =>handleEmpty()} className="btn-empty">Choose again</button>
+    </div>
+  )
+}
+
+const Footer = () => {
+  return (
+    <div>
+      <h2>How React works</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi facilis inventore saepe eos fuga corrupti, eius, sapiente laboriosam dolorem maiores nostrum. Ipsam magnam, suscipit nihil culpa officiis ea error! Aliquam.</p>
     </div>
   )
 }
