@@ -45,8 +45,6 @@ const handleDevice = (device) => {
       </div>
       <div className='cart-container'>
         <Cart cart={cart}></Cart>
-        {/* <h1>Selected Devices</h1> */}
-     {/* <h5>device name :{cart.name} </h5> */}
       </div>
    </div>
   )
@@ -72,19 +70,14 @@ const Device = ({device, handleDevice}) => {
 }
 
 const Cart = ({cart}) => {
-// const {name} = cart;
-let deviceName = []
-// const pair = Object.entries(cart)
-
-for(const device of cart){
-deviceName = deviceName + device.name;
-// deviceName.push (device.name);
-}
+  console.log(cart)
 
   return (
     <div>
       <h1>Order Devices</h1>
-      <h5>{deviceName}</h5>
+      {
+        cart.map(crt => <h3 key={crt.name}>{crt.name}</h3>)
+      }
       <button>Choose one for me</button> <br />
       <button>Choose again</button>
     </div>
